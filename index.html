@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Material Design for Bootstrap fonts and icons -->
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+
+    <!-- Material Design for Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+    .list-group-item.disabled, .list-group-item:disabled {
+    color: #6c757d;
+    background-color: #f9f9f9;
+    text-decoration: line-through;
+}</style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="container">
+           <div class="row">
+               <div class="col-sm">
+                    <h1 class="text-center">{{ title }}</h1>
+               </div>
+           </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <h3 v-if="lista.length === 0" >Criar uma tarefa</h3>
+                    <h3 v-else>Adicionar uma tarefa</h3>
+                    <div class="form-group">
+                            <label for="tarefa" class="sr-only">Tarefa</label>
+                            <input type="text" v-on:keyup.enter="addTarefas" v-model="tarefa" class="form-control" id="tarefa" placeholder="Tarefa">
+                          </div>
+                </div>
+                <div class="col-sm">
+                    <h3  v-if="lista.length === 0">Nenhuma tarefa criada</h3>
+                    <h3 v-else>Lista de tarefas</h3>
+                    <div class="progress  mt-4" style="height: 12px;">
+                        <div class="progress-bar" role="progressbar" style="width: 25%;"></div>
+                      </div>    
+                    <ul class="list-group">
+                            <li v-for="item in lista" 
+                                v-bind:class="item.concluida == true ? 'disabled' : ''"  
+                                @click="item.concluida = ! item.concluida" class="list-group-item">{{item.item}}</li>
+                          </ul>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm">
+                        <pre class="jumbotron">
+                                {{$data}}
+                            </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script> -->
+</body>
+
+</html>
